@@ -1,0 +1,34 @@
+{
+	"schemaVersion": 1,
+	"id": "safe_tools",
+	"version": "${version}",
+	"name": "Safe Tools",
+	"description": "Prevents breaking or damaging with nearly broken tools and weapons, with a toggleable feature.",
+	"authors": [
+		"MEGATREX4"
+	],
+	"contact": {
+		"homepage": "https://megatrex4.netlify.app/",
+		"sources": "https://github.com/FabricMC/fabric-example-mod"
+	},
+	"license": "CC0-1.0",
+	"icon": "assets/safe_tools/icon.png",
+	"environment": "*",
+	"entrypoints": {
+		"client": [
+			"com.megatrex4.SafeTools"
+		]
+	},
+	"mixins": [
+		"safe_tools.mixins.json"
+	],
+	"depends": {
+		"fabricloader": ">=0.16.10",
+		"minecraft": "~1.21.4",
+		"java": ">=21",
+		"fabric-api": "*"
+	},
+	"suggests": {
+		"another-mod": "*"
+	}
+}

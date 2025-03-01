@@ -1,0 +1,5 @@
+{
+  "message.safe_tools.enabled": "Safe Tools is now enabled!",
+  "message.safe_tools.disabled": "Safe Tools is now disabled!",
+  "message.safe_tools.weapon_broken": "Your weapon is about to break!"
+}
