@@ -6,6 +6,7 @@ import net.fabricmc.fabric.api.client.keybinding.v1.KeyBindingHelper;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.option.KeyBinding;
 import net.minecraft.client.util.InputUtil;
+import net.minecraft.util.Formatting;
 import org.lwjgl.glfw.GLFW;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -20,7 +21,6 @@ public class SafeTools implements ClientModInitializer {
 	public void onInitializeClient() {
 		LOGGER.info("[Safe Tools] Mod initialized!");
 
-		// Register the keybind (Default: V key)
 		toggleKey = KeyBindingHelper.registerKeyBinding(new KeyBinding(
 				"key.safe_tools.toggle",
 				InputUtil.Type.KEYSYM,
@@ -37,7 +37,7 @@ public class SafeTools implements ClientModInitializer {
 					// Use translatable text for enabling/disabling
 					minecraftClient.player.sendMessage(net.minecraft.text.Text.translatable(
 							state ? "message.safe_tools.enabled" : "message.safe_tools.disabled"
-					), true);
+					).formatted(Formatting.GRAY), true);
 				}
 			}
 		});

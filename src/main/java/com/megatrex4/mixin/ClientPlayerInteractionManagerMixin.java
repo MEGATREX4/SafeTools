@@ -9,6 +9,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.item.MiningToolItem;
 import net.minecraft.item.SwordItem;
 import net.minecraft.util.ActionResult;
+import net.minecraft.util.Formatting;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
 import org.spongepowered.asm.mixin.Mixin;
@@ -30,7 +31,11 @@ public abstract class ClientPlayerInteractionManagerMixin {
 
         if (ConfigManager.isEnabled() && isNearlyBrokenTool(heldItem)) {
             cir.setReturnValue(ActionResult.FAIL.isAccepted());
-            player.sendMessage(net.minecraft.text.Text.translatable("message.safe_tools.weapon_broken"), true);
+            player.sendMessage(
+                    net.minecraft.text.Text.translatable("message.safe_tools.weapon_broken")
+                            .formatted(Formatting.RED),
+                    true
+            );
         }
     }
 
@@ -45,10 +50,11 @@ public abstract class ClientPlayerInteractionManagerMixin {
             ci.cancel();
             player.sendMessage(
                     net.minecraft.text.Text.translatable("message.safe_tools.weapon_broken")
-                            .styled(style -> style.withColor(net.minecraft.text.TextColor.parse("#FF0000"))),
+                            .formatted(Formatting.RED),
                     true
             );
         }
+
     }
 
     private boolean isNearlyBrokenTool(ItemStack itemStack) {
