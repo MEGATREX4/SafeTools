@@ -1,6 +1,8 @@
 package com.megatrex4;
 
 import net.fabricmc.api.ClientModInitializer;
+import net.fabricmc.api.EnvType;
+import net.fabricmc.api.Environment;
 import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
 import net.fabricmc.fabric.api.client.keybinding.v1.KeyBindingHelper;
 import net.minecraft.client.MinecraftClient;
@@ -11,6 +13,7 @@ import org.lwjgl.glfw.GLFW;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+@Environment(EnvType.CLIENT)
 public class SafeTools implements ClientModInitializer {
 	public static final String MOD_ID = "safe_tools";
 	public static final Logger LOGGER = LoggerFactory.getLogger(MOD_ID);
@@ -34,7 +37,6 @@ public class SafeTools implements ClientModInitializer {
 				boolean state = ConfigManager.isEnabled();
 				MinecraftClient minecraftClient = MinecraftClient.getInstance();
 				if (minecraftClient.player != null) {
-					// Use translatable text for enabling/disabling
 					minecraftClient.player.sendMessage(net.minecraft.text.Text.translatable(
 							state ? "message.safe_tools.enabled" : "message.safe_tools.disabled"
 					).formatted(Formatting.GRAY), true);
